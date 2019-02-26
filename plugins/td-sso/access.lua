@@ -9,6 +9,7 @@
 local _M = {}
 
 function _M.checkToken(conf, accessToken, clientId)
+    ngx.log(ngx.ERR, "access herer\n")
     if accessToken and clientId then
         local httpc = http:new()
         local res, err = httpc:request_uri(conf.oauth_check_url, {
@@ -21,6 +22,10 @@ function _M.checkToken(conf, accessToken, clientId)
         })
 
         if not err then
+            ngx.log(ngx.ERR, "err =====\n")
+            ngx.log(ngx.ERR, err)
+            ngx.log(ngx.ERR, "res===\n")
+            ngx.log(ngx.ERR, res)
             ngx.say(err)
             ngx.exit(ngx.HTTP_UNAUTHORIZED)
         end

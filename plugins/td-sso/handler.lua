@@ -17,8 +17,6 @@ end
 
 function TdSsoHandler:access(conf)
     TdSsoHandler.super.access(self)
-
-    local request_uri = ngx.var.request_uri or ""
     -- 获取cookies
     local cookie = require "resty.cookie"
     local ck = cookie:new()

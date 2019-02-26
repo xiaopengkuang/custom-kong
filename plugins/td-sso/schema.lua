@@ -11,7 +11,6 @@ return {
     fields = {
         cookie_token_key = { type = "string", required = true },
         cookie_client_key = { type = "string", required = true },
-        check_oauth = { type = "boolean", default = true },
         oauth_check_url = { required = true, type = "url" },
         oauth_login_url = { required = true, type = "url" },
         timeout = { default = 10000, type = "number" },
