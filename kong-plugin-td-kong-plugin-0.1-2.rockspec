@@ -1,5 +1,5 @@
 package = "kong-plugin-td-kong-plugin"
-version = "0.1-1"
+version = "0.1-2"
 supported_platforms = {"linux", "macosx"}
 source = {
   url = "git://github.com/xiaopengkuang/custom-kong"
