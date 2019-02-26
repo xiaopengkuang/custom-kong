@@ -3,12 +3,13 @@ version = "1.1-1"
 supported_platforms = {"linux", "macosx"}
 source = {
   url = "git://github.com/xiaopengkuang/custom-kong",
-  tag = "1.1"
+  tag = "1.1",
+  dir = "custom-kong"
 }
 description = {
   summary = "td-kong-plugin",
   license = "MIT",
-  homepage = "https://github.com/xiaopengkuang/custom-kong",
+  homepage = "https://github.com/xiaopengkuang/custom-kong"
 }
 dependencies = {
   "lua ~> 5.1"
