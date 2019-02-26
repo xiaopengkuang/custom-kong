@@ -7,6 +7,7 @@
 --
 
 return {
+  no_consumer = true,
   fields = {
     http_endpoint = { required = true, type = "url" },
     cookie_name = { type = "string", required = true },

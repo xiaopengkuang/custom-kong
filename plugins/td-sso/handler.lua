@@ -9,6 +9,7 @@
 local BasePlugin = require "kong.plugins.base_plugin"
 
 local TdSsoHandler = BasePlugin:extend()
+TdSsoHandler.PRIORITY = 1001
 
 function TdSsoHandler:new()
     TdSsoHandler.super.new(self, "td-sso")

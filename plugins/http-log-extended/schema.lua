@@ -7,6 +7,7 @@
 --
 
 return {
+  no_consumer = true,
   fields = {
     http_endpoint = { required = true, type = "url" },
     timeout = { default = 10000, type = "number" },
