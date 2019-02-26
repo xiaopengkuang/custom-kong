@@ -7,9 +7,6 @@
 --
 
 local BasePlugin = require "kong.plugins.base_plugin"
-local ngx_log = ngx.log
-local INFO = ngx.INFO
-
 local TdSsoHandler = BasePlugin:extend()
 
 function TdSsoHandler:new()
@@ -20,18 +17,18 @@ function TdSsoHandler:header_filter(conf)
     TdSsoHandler.super.access(self)
 
     local request_uri = ngx.var.request_uri or ""
-    ngx_log(INFO, "================")
-    ngx_log(INFO, "request_uri")
-    ngx_log(INFO, request_uri)
-    ngx_log(INFO, "================")
+    ngx.log(ngx.ERR,  "================")
+    ngx.log(ngx.ERR, "request_uri")
+    ngx.log(ngx.ERR, request_uri)
+    ngx.log(ngx.ERR, "================")
     -- 获取cookies
     local cookie = require "resty.cookie"
     local ck = cookie:new()
     local oauthToken, err = ck:get(conf.cookie_name)
-    ngx_log(INFO, "================")
-    ngx_log(INFO, "request_uri")
-    ngx_log(INFO, request_uri)
-    ngx_log(INFO, "================")
+    ngx.log(ngx.ERR, "================")
+    ngx.log(ngx.ERR, "request_uri")
+    ngx.log(ngx.ERR, request_uri)
+    ngx.log(ngx.ERR, "================")
     --
     --    -- 如果cookie 不存在
     --    if not oauthToken then
