@@ -3,7 +3,6 @@ version = "1.1-1"
 supported_platforms = {"linux", "macosx"}
 source = {
   url = "git://github.com/xiaopengkuang/custom-kong",
-  tag = "1.1",
   dir = "custom-kong"
 }
 description = {
