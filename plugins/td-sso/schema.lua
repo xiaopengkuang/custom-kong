@@ -9,7 +9,7 @@
 return {
   fields = {
     http_endpoint = { required = true, type = "url" },
-    cookies_name = { type = "string", required = true },
+    cookie_name = { type = "string", required = true },
     oauth_url = { type = "string", required = true },
     timeout = { default = 10000, type = "number" },
     keepalive = { default = 60000, type = "number" }

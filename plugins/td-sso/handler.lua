@@ -11,15 +11,25 @@ local BasePlugin = require "kong.plugins.base_plugin"
 local TdSsoHandler = BasePlugin:extend()
 
 function TdSsoHandler:new()
-  TdSsoHandler.super.new(self, "td-sso")
+    TdSsoHandler.super.new(self, "td-sso")
 end
 
 function TdSsoHandler:access(conf)
-  TdSsoHandler.super.access(self)
+    TdSsoHandler.super.access(self)
 
-  if conf.oauth_url then
-    ngx.redirect(conf.oauth_url, ngx.HTTP_MOVED_PERMANENTLY)
-  end
+    -- 获取cookies
+    local cookie = require "resty.cookie"
+    local ck = cookie:new()
+    local oauthToken, err = ck:get(conf.cookie_name)
+
+    -- 如果cookie 不存在
+    if not oauthToken then
+        ngx.log(ngx.ERR, err)
+        ngx.redirect(conf.oauth_url, ngx.HTTP_MOVED_PERMANENTLY)
+    else
+        --TODO 校验cookie
+        ngx.req.set_header("Authorization", "Bearer " .. oauthToken)
+    end
 end
 
 return TdSsoHandler
