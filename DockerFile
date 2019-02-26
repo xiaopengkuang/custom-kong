@@ -8,3 +8,5 @@ CMD luarocks install kong-plugin-td-kong-plugin 0.1-0;\
 	kong start
 
 ADD patches/openresty/lua-resty-string/aes.lua /usr/local/openresty/lualib/resty/aes.lua
+ADD patches/openresty/http/http.lua /usr/local/openresty/lualib/resty/http.lua
+ADD patches/openresty/http/http_headers.lua /usr/local/openresty/lualib/resty/http_headers.lua
