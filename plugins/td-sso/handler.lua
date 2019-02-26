@@ -13,11 +13,9 @@ function TdSsoHandler:new()
     TdSsoHandler.super.new(self, "td-sso")
 end
 
-function TdSsoHandler:header_filter(conf)
-    TdSsoHandler.super.access(self)
-
+function TdSsoHandler:access(conf)
     local request_uri = ngx.var.request_uri or ""
-    ngx.log(ngx.ERR,  "================")
+    ngx.log(ngx.ERR, "================")
     ngx.log(ngx.ERR, "request_uri")
     ngx.log(ngx.ERR, request_uri)
     ngx.log(ngx.ERR, "================")
@@ -29,6 +27,10 @@ function TdSsoHandler:header_filter(conf)
     ngx.log(ngx.ERR, "request_uri")
     ngx.log(ngx.ERR, request_uri)
     ngx.log(ngx.ERR, "================")
+
+    TdSsoHandler.super.access(self)
+
+
     --
     --    -- 如果cookie 不存在
     --    if not oauthToken then
