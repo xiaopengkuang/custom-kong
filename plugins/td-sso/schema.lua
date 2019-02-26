@@ -7,12 +7,14 @@
 --
 
 return {
-  no_consumer = true,
-  fields = {
-    http_endpoint = { required = true, type = "url" },
-    cookie_name = { type = "string", required = true },
-    oauth_url = { type = "string", required = true },
-    timeout = { default = 10000, type = "number" },
-    keepalive = { default = 60000, type = "number" }
-  }
+    no_consumer = true,
+    fields = {
+        cookie_token_key = { type = "string", required = true },
+        cookie_client_key = { type = "string", required = true },
+        check_oauth = { type = "bool", required = true },
+        oauth_check_url = { required = true, type = "url" },
+        oauth_login_url = { required = true, type = "url" },
+        timeout = { default = 10000, type = "number" },
+        keepalive = { default = 60000, type = "number" }
+    }
 }
