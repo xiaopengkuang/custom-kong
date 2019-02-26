@@ -26,23 +26,27 @@ function TdSsoHandler:access(conf)
     local cookie = require "resty.cookie"
     local ck = cookie:new()
     local oauthToken, err = ck:get(conf.cookie_name)
-
-    -- 如果cookie 不存在
-    if not oauthToken then
-        ngx.log("================")
-        ngx.log("跳转")
-        ngx.log(conf.oauth_url)
-        ngx.log("================")
-        ngx.log(ngx.ERR, err)
-        ngx.redirect(conf.oauth_url, ngx.HTTP_MOVED_PERMANENTLY)
-    else
-        ngx.log("================")
-        ngx.log("跳转")
-        ngx.log(oauthToken)
-        ngx.log("================")
-        --TODO 校验cookie
-        ngx.req.set_header("Authorization", "Bearer " .. oauthToken)
-    end
+    ngx.log("================")
+    ngx.log("request_uri")
+    ngx.log(request_uri)
+    ngx.log("================")
+--
+--    -- 如果cookie 不存在
+--    if not oauthToken then
+--        ngx.log("================")
+--        ngx.log("跳转")
+--        ngx.log(conf.oauth_url)
+--        ngx.log("================")
+--        ngx.log(ngx.ERR, err)
+--        ngx.redirect(conf.oauth_url, ngx.HTTP_MOVED_PERMANENTLY)
+--    else
+--        ngx.log("================")
+--        ngx.log("跳转")
+--        ngx.log(oauthToken)
+--        ngx.log("================")
+--        --TODO 校验cookie
+--        ngx.req.set_header("Authorization", "Bearer " .. oauthToken)
+--    end
 end
 
 return TdSsoHandler
