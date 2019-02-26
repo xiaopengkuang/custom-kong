@@ -14,40 +14,36 @@ function TdSsoHandler:new()
 end
 
 function TdSsoHandler:access(conf)
+    TdSsoHandler.super.access(self)
+
     local request_uri = ngx.var.request_uri or ""
     ngx.log(ngx.ERR, "================")
-    ngx.log(ngx.ERR, "request_uri")
+    ngx.log(ngx.ERR, "request_uri:")
     ngx.log(ngx.ERR, request_uri)
     ngx.log(ngx.ERR, "================")
     -- 获取cookies
     local cookie = require "resty.cookie"
     local ck = cookie:new()
     local oauthToken, err = ck:get(conf.cookie_name)
-    ngx.log(ngx.ERR, "================")
-    ngx.log(ngx.ERR, "request_uri")
-    ngx.log(ngx.ERR, request_uri)
-    ngx.log(ngx.ERR, "================")
+    ngx.log(ngx.ERR, "================\n")
+    ngx.log(ngx.ERR, "oauthToken:\n")
+    ngx.log(ngx.ERR, oauthToken)
+    ngx.log(ngx.ERR, "\n================\n")
 
-    TdSsoHandler.super.access(self)
-
-
-    --
-    --    -- 如果cookie 不存在
-    --    if not oauthToken then
-    --        ngx.log("================")
-    --        ngx.log("跳转")
-    --        ngx.log(conf.oauth_url)
-    --        ngx.log("================")
-    --        ngx.log(ngx.ERR, err)
-    --        ngx.redirect(conf.oauth_url, ngx.HTTP_MOVED_PERMANENTLY)
-    --    else
-    --        ngx.log("================")
-    --        ngx.log("跳转")
-    --        ngx.log(oauthToken)
-    --        ngx.log("================")
-    --        --TODO 校验cookie
-    --        ngx.req.set_header("Authorization", "Bearer " .. oauthToken)
-    --    end
+    -- 如果cookie 不存在
+    if not oauthToken then
+        ngx.log(ngx.ERR, "================\n")
+        ngx.log(ngx.ERR, "跳转URL:\n")
+        ngx.log(ngx.ERR, conf.oauth_url)
+        ngx.log(ngx.ERR, "\n================\n")
+        ngx.redirect(conf.oauth_url, ngx.HTTP_MOVED_PERMANENTLY)
+    else
+        ngx.log("================\n")
+        ngx.log("设置header\n")
+        --TODO 校验cookie
+        ngx.req.set_header("Authorization", "Bearer " .. oauthToken)
+        ngx.log("================\n")
+    end
 end
 
 return TdSsoHandler
