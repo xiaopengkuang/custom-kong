@@ -1,0 +1,11 @@
+FROM kong:0.14.1-centos
+
+MAINTAINER byrd kuangxiaopeng@thundersdata.com
+
+RUN yum -y update && yum -y install unzip openssl-devel
+
+RUN luarocks install kong-plugin-td-kong-plugin
+
+CMD kong start
+
+ADD patches/openresty/lua-resty-string/aes.lua /usr/local/openresty/lualib/resty/aes.lua
