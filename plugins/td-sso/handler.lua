@@ -28,7 +28,7 @@ function TdSsoHandler:access(conf)
     ngx.log(ngx.ERR, "token cookie_client_key: \n")
     ngx.log(ngx.ERR, conf.cookie_client_key)
 
-    if not accessTokenErr then
+    if accessTokenErr then
         ngx.log(ngx.ERR, "token error \n")
         ngx.log(ngx.ERR, accessTokenErr)
         ngx.log(ngx.ERR, accessToken)
@@ -36,7 +36,7 @@ function TdSsoHandler:access(conf)
     end
 
     local clientId, ClientErr = ck:get(conf.cookie_client_key)
-    if not ClientErr then
+    if ClientErr then
         ngx.log(ngx.ERR, "ClientErr error \n")
         ngx.log(ngx.ERR, ClientErr)
         ngx.log(ngx.ERR, clientId)
