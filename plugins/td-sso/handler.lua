@@ -19,18 +19,18 @@ function TdSsoHandler:access(conf)
     TdSsoHandler.super.access(self)
 
     local request_uri = ngx.var.request_uri or ""
-    ngx.log("================")
-    ngx.log("request_uri")
-    ngx.log(request_uri)
-    ngx.log("================")
+    print("================")
+    print("request_uri")
+    print(request_uri)
+    print("================")
     -- 获取cookies
     local cookie = require "resty.cookie"
     local ck = cookie:new()
     local oauthToken, err = ck:get(conf.cookie_name)
-    ngx.log("================")
-    ngx.log("request_uri")
-    ngx.log(request_uri)
-    ngx.log("================")
+    print("================")
+    print("request_uri")
+    print(request_uri)
+    print("================")
 --
 --    -- 如果cookie 不存在
 --    if not oauthToken then
