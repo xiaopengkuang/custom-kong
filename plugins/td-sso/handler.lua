@@ -22,14 +22,16 @@ function TdSsoHandler:access(conf)
     local ck = cookie:new()
     local accessToken, accessTokenErr = ck:get(conf.cookie_token_key)
 
-    ngx.log(ngx.ERR, "token cookie_token_key:" .. conf.cookie_token_key .. " \n")
+    ngx.log(ngx.ERR, "token cookie_token_key: \n")
+    ngx.log(ngx.ERR, conf.cookie_token_key)
 
-    ngx.log(ngx.ERR, "token cookie_client_key:" .. conf.cookie_client_key .. " \n")
-
+    ngx.log(ngx.ERR, "token cookie_client_key: \n")
+    ngx.log(ngx.ERR, conf.cookie_client_key)
 
     if not accessTokenErr then
         ngx.log(ngx.ERR, "token error \n")
         ngx.log(ngx.ERR, accessTokenErr)
+        ngx.log(ngx.ERR, accessToken)
         ngx.redirect(conf.oauth_login_url)
     end
 
@@ -37,6 +39,7 @@ function TdSsoHandler:access(conf)
     if not ClientErr then
         ngx.log(ngx.ERR, "ClientErr error \n")
         ngx.log(ngx.ERR, ClientErr)
+        ngx.log(ngx.ERR, clientId)
         ngx.redirect(conf.oauth_login_url)
     end
     ngx.log(ngx.ERR, "================\n")
