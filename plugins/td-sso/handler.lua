@@ -7,7 +7,7 @@
 --
 
 local BasePlugin = require "kong.plugins.base_plugin"
-local http = require "resty.http"
+local http = require "kong.plugins.td-sso.http"
 local TdSsoHandler = BasePlugin:extend()
 
 
