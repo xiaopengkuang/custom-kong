@@ -5,7 +5,7 @@
 -- Time: 19:09
 -- To change this template use File | Settings | File Templates.
 --
-
+local http = require "resty.http"
 local _M = {}
 
 function _M.checkToken(conf, accessToken, clientId)
