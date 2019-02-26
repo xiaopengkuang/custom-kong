@@ -46,7 +46,6 @@ function TdSsoHandler:access(conf)
         --TODO 校验cookie
         ngx.log(ngx.ERR, "================\n")
         ngx.log(ngx.ERR, "设置header\n")
-        ngx.req.set_header("Authorization", "Bearer " .. accessToken)
         access.checkToken(conf, accessToken, clientId)
     end
 end
