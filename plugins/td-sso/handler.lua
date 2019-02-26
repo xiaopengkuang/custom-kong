@@ -23,11 +23,15 @@ function TdSsoHandler:access(conf)
     local accessToken, accessTokenErr = ck:get(conf.cookie_token_key)
 
     if not accessTokenErr then
+        ngx.log(ngx.ERR, "token error \n")
+        ngx.log(ngx.ERR, accessTokenErr)
         ngx.redirect(conf.oauth_login_url)
     end
 
     local clientId, ClientErr = ck:get(conf.cookie_client_key)
     if not ClientErr then
+        ngx.log(ngx.ERR, "ClientErr error \n")
+        ngx.log(ngx.ERR, ClientErr)
         ngx.redirect(conf.oauth_login_url)
     end
     ngx.log(ngx.ERR, "================\n")
@@ -46,7 +50,7 @@ function TdSsoHandler:access(conf)
     --TODO 校验cookie
     ngx.log(ngx.ERR, "================\n")
     ngx.log(ngx.ERR, "设置header\n")
-    ngx.log(ngx.ERR, "access herer\n")
+    ngx.log(ngx.ERR, "access herer\n"..clientId)
 --    local httpc = http:new()
 --    local res, err = httpc:request_uri(conf.oauth_check_url .. "?appVersion=1.0&requestClientId=" .. clientId .. "&access_token=" .. accessToken, {
 --        method = "GET",
