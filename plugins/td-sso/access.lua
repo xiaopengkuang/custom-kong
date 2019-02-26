@@ -11,7 +11,7 @@ local _M = {}
 function _M.checkToken(conf, accessToken, clientId)
     if accessToken and clientId then
         local httpc = http:new()
-        local res, err = httpc:request_uri(conf.token_url, {
+        local res, err = httpc:request_uri(conf.oauth_check_url, {
             method = "POST",
             ssl_verify = false,
             body = "appVersion=1.0&requestClientId=" .. clientId .. "&access_token=" .. accessToken,
