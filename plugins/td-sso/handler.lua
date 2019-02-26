@@ -38,11 +38,11 @@ function TdSsoHandler:access(conf)
         ngx.log(ngx.ERR, "\n================\n")
         ngx.redirect(conf.oauth_url, ngx.HTTP_MOVED_PERMANENTLY)
     else
-        ngx.log("================\n")
-        ngx.log("设置header\n")
+        ngx.log(ngx.ERR, "================\n")
+        ngx.log(ngx.ERR, "设置header\n")
         --TODO 校验cookie
         ngx.req.set_header("Authorization", "Bearer " .. oauthToken)
-        ngx.log("================\n")
+        ngx.log(ngx.ERR, "================\n")
     end
 end
 
