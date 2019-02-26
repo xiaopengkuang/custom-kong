@@ -17,7 +17,6 @@ build = {
   modules = {
     ["kong.plugins.td-sso.handler"] = "plugins/td-sso/handler.lua",
     ["kong.plugins.td-sso.schema"] = "plugins/td-sso/schema.lua",
-    ["kong.plugins.td-sso.access"] = "plugins/td-sso/access.lua",
     ["kong.plugins.http-log-extended.handler"] = "plugins/http-log-extended/handler.lua",
     ["kong.plugins.http-log-extended.schema"] = "plugins/http-log-extended/schema.lua",
     ["kong.plugins.http-log-extended.serializer"] = "plugins/http-log-extended/serializer.lua"
