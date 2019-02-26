@@ -1,7 +1,7 @@
 FROM kong:0.14.1-centos
 
 MAINTAINER byrd kuangxiaopeng@thundersdata.com
-
+COPY plugins/* /plugins/
 RUN yum -y update && yum -y install unzip openssl-devel
 
 CMD luarocks install kong-plugin-td-kong-plugin;\ 
