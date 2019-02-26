@@ -8,7 +8,7 @@ source = {
 description = {
   summary = "td-kong-plugin",
   license = "MIT",
-  homepage = "https://github.com/xiaopengkuang/custom-kong"
+  homepage = "https://github.com/xiaopengkuang/custom-kong",
 }
 dependencies = {
   "lua ~> 5.1"
