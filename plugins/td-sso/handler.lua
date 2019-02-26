@@ -17,6 +17,11 @@ end
 function TdSsoHandler:access(conf)
     TdSsoHandler.super.access(self)
 
+    local request_uri = ngx.var.request_uri or ""
+    print("================")
+    print("request_uri")
+    print(request_uri)
+    print("================")
     -- 获取cookies
     local cookie = require "resty.cookie"
     local ck = cookie:new()
@@ -24,9 +29,17 @@ function TdSsoHandler:access(conf)
 
     -- 如果cookie 不存在
     if not oauthToken then
+        print("================")
+        print("跳转")
+        print(conf.oauth_url)
+        print("================")
         ngx.log(ngx.ERR, err)
         ngx.redirect(conf.oauth_url, ngx.HTTP_MOVED_PERMANENTLY)
     else
+        print("================")
+        print("跳转")
+        print(oauthToken)
+        print("================")
         --TODO 校验cookie
         ngx.req.set_header("Authorization", "Bearer " .. oauthToken)
     end
