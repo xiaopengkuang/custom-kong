@@ -16,10 +16,10 @@ dependencies = {
 build = {
   type = "builtin",
   modules = {
-    ["kong.plugins.td-sso.handler"] = "custom-plugins/td-sso/handler.lua",
-    ["kong.plugins.td-sso.schema"] = "custom-plugins/td-sso/schema.lua",
-    ["kong.plugins.http-log-extended.handler"] = "custom-plugins/http-log-extended/handler.lua",
-    ["kong.plugins.http-log-extended.schema"] = "custom-plugins/http-log-extended/schema.lua",
-    ["kong.plugins.http-log-extended.serializer"] = "custom-plugins/http-log-extended/serializer.lua"
+    ["kong.plugins.td-sso.handler"] = "plugins/td-sso/handler.lua",
+    ["kong.plugins.td-sso.schema"] = "plugins/td-sso/schema.lua",
+    ["kong.plugins.http-log-extended.handler"] = "plugins/http-log-extended/handler.lua",
+    ["kong.plugins.http-log-extended.schema"] = "plugins/http-log-extended/schema.lua",
+    ["kong.plugins.http-log-extended.serializer"] = "plugins/http-log-extended/serializer.lua"
   }
 }
